@@ -12,9 +12,11 @@ function convertToObject(sourceString) {
       .map((str) => str.trim())
       .filter((str) => str.length !== 0 && str.includes(':'))
       .map((item) => {
-        const [key, value] = item.split(':');
+        const idx = item.indexOf(':');
+        const key = item.slice(0, idx).trim();
+        const value = item.slice(idx + 1).trim();
 
-        return [key.trim(), value.trim()];
+        return key.length > 0 ? [key, value] : null;
       }),
   );
 }
