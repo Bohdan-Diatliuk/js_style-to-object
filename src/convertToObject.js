@@ -6,6 +6,10 @@
  * @return {object}
  */
 function convertToObject(sourceString) {
+  if (typeof sourceString !== 'string') {
+    return {};
+  }
+
   return Object.fromEntries(
     sourceString
       .split(';')
